@@ -1,12 +1,12 @@
 var React = require('react');
-var Splash = require('../containers/Splash');
+var SplashContainer = require('../containers/SplashContainer');
 
 
 var Home = React.createClass({
 	render: function() {
 		return (
 			<div>
-				<Splash />
+				<SplashContainer />
 			</div>
 		)
 	}
