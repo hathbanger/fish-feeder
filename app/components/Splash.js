@@ -11,11 +11,10 @@ function Splash (props) {
     <div
       className="jumbotron col-sm-6 text-center col-sm-offset-3"
       style={styles}>
-      <img src={props.fishObj.picture} />
       <h2>{props.fishObj.name}</h2>
-      <h3>Feed Count: {props.fishObj.feed}</h3>
+      <h3>Feed Count: {props.fishObj.food}</h3>
       <FeedButton />
-      <progress className="progress" value={props.fishObj.feed} max="1000" aria-describedby="example-caption-2"></progress>
+      <progress className="progress" value={props.fishObj.food} max="1000" aria-describedby="example-caption-2"></progress>
     </div>
   )
 }
