@@ -21,7 +21,7 @@ function Splash (props) {
 }
 
 Splash.propTypes = {
-  fishObj: PropTypes.array.isRequired,
+  // fishObj: PropTypes.array.isRequired,
 }
 
 module.exports = Splash;
