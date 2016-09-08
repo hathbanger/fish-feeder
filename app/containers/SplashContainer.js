@@ -16,7 +16,7 @@ var SplashContainer = React.createClass({
 	},
 	componentDidMount: function(){
 		apiHelper.getFishBowl()
-			.then(function(info){				
+			.then(function(info){
 				this.setState({
 					fishObj: info.data
 				})
@@ -34,6 +34,7 @@ var SplashContainer = React.createClass({
 		return (
 			<Splash
 				fishObj={this.state.fishObj}
+				onClick={this.handleClick}
 			/>
 		)
 	}
