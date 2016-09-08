@@ -15,17 +15,19 @@ var Splash = React.createClass({
 	},
 	componentDidMount: function(){
 		apiHelper.getFishBowl()
-			.then(function(fish){
+			.then(function(info){
+				console.log("info", info);
 				this.setState({
-					fishObj: fish.data.fish
+					fishObj: info.data
 				})
 			}.bind(this));
 	},
     handleClick: function() {
     	apiHelper.feed()
     		.then(function(info){
+    			console.log("info", info);
 				this.setState({
-					fishObj: info.data.fish
+					fishObj: info.data
 				})
 			}.bind(this));
     },
@@ -34,11 +36,10 @@ var Splash = React.createClass({
 			<div 
 				className="jumbotron col-sm-6 text-center col-sm-offset-3"
 				style={styles}>
-				<img src={this.state.fishObj.picture} />
 				<h2>{this.state.fishObj.name}</h2>
-				<h3>Feed Count: {this.state.fishObj.feed}</h3>
+				<h3>Feed Count: {this.state.fishObj.food}</h3>
 				<button  onClick={this.handleClick} className="btn btn-lg btn-warning">feed</button>
-				<progress className="progress" value={this.state.fishObj.feed} max="1000" aria-describedby="example-caption-2"></progress>
+				<progress className="progress" value={this.state.fishObj.food} max="1000" aria-describedby="example-caption-2"></progress>
 			</div>
 		)
 	}
