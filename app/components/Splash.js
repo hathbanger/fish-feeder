@@ -1,5 +1,6 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
+var FeedButton = require('./FeedButton');
 var styles = {
 	background: 'transparent',
 	textAlign: 'center'
@@ -13,7 +14,7 @@ function Splash (props) {
       <img src={props.fishObj.picture} />
       <h2>{props.fishObj.name}</h2>
       <h3>Feed Count: {props.fishObj.feed}</h3>
-      <button onClick={this.handleClick} className="btn btn-lg btn-warning">feed</button>
+      <FeedButton />
       <progress className="progress" value={props.fishObj.feed} max="1000" aria-describedby="example-caption-2"></progress>
     </div>
   )

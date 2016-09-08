@@ -10,4 +10,12 @@ var FeedButton = React.createClass({
 	}
 });
 
+// function FeedButton (props) {
+//   return (
+//     <div>
+//       <button className='btn btn-lg btn-success'>Feed</button>
+//     </div>
+//   )
+// }
+
 module.exports = FeedButton;
