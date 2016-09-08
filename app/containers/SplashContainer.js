@@ -1,13 +1,14 @@
 var React = require('react');
 var apiHelper = require('../utils/apiHelper');
-var FeedButton = require('./FeedButton');
+var Splash = require('../components/Splash');
+// var FeedButton = require('../components/FeedButton');
 var styles = {
 	background: 'transparent',
 	textAlign: 'center'
 }
 
 
-var Splash = React.createClass({
+var SplashContainer = React.createClass({
 	getInitialState: function(){
 		return {
 			fishObj: []
@@ -31,17 +32,11 @@ var Splash = React.createClass({
     },
 	render: function(){
 		return (
-			<div 
-				className="jumbotron col-sm-6 text-center col-sm-offset-3"
-				style={styles}>
-				<img src={this.state.fishObj.picture} />
-				<h2>{this.state.fishObj.name}</h2>
-				<h3>Feed Count: {this.state.fishObj.feed}</h3>
-				<button  onClick={this.handleClick} className="btn btn-lg btn-warning">feed</button>
-				<progress className="progress" value={this.state.fishObj.feed} max="1000" aria-describedby="example-caption-2"></progress>
-			</div>
+			<Splash
+				fishObj={this.state.fishObj}
+			/>
 		)
 	}
 });
 
-module.exports = Splash;
+module.exports = SplashContainer;
