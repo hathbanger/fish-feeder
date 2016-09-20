@@ -14,10 +14,9 @@ function Splash (props) {
     <div
       className="jumbotron col-sm-6 text-center col-sm-offset-3"
       style={styles}>
-      <h2>{props.fishObj.name}</h2>
-      <h3>Feed Count: {props.fishObj.food}</h3>
-			<button className='btn btn-lg btn-success' onClick={props.onClick}>Feed</button>
-      <progress className="progress" value={props.fishObj.food} max="1000" aria-describedby="example-caption-2"></progress>
+      <h2 className="display-3">{props.fishObj.name}</h2>
+      <h3 className="display-4">Feed Count: {props.fishObj.food}</h3>
+			<button className='btn btn-success' onClick={props.onClick}>Feed</button>
     </div>
   )
 }

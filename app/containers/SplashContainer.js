@@ -23,6 +23,7 @@ var SplashContainer = React.createClass({
 			}.bind(this));
 	},
     handleClick: function() {
+    	console.log('click!');
     	apiHelper.feed()
     		.then(function(info){
 				this.setState({
