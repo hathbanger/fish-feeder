@@ -22,6 +22,7 @@ function auth(state = {
       return Object.assign({}, state, {
         isFetching: false,
         isAuthenticated: true,
+        all_fish: action.all_fish,
         errorMessage: ''
       })
     case LOGIN_FAILURE:
@@ -65,12 +66,30 @@ function quotes(state = {
       return state
   }
 }
-
+// The quotes reducer
+function all_fish(state = {
+    isFetching: false,
+    all_fish: {},
+    authenticated: false
+  }, action) {
+  switch (action.type) {
+    case LOGIN_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        isAuthenticated: true,
+        all_fish: action.all_fish,
+        errorMessage: ''
+      })
+    default:
+      return state
+  }
+}
 // We combine the reducers here so that they
 // can be left split apart above
 const quotesApp = combineReducers({
   auth,
-  quotes
+  quotes,
+  all_fish
 })
 
 export default quotesApp

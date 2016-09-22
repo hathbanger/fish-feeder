@@ -9,10 +9,10 @@ export default class Navbar extends Component {
     const { dispatch, isAuthenticated, errorMessage } = this.props
     
     return (
-      <nav className='navbar navbar-default'>
+      <nav className='navbar navbar-light bg-faded'>
         <div className='container-fluid'>
-          <a className="navbar-brand" href="#">Quotes App</a>
-           <div className='navbar-form'>
+          <a className="navbar-brand" href="#">Fish Feeder</a>
+           <div className='navbar-form form-inline pull-xs-right'>
            
            {!isAuthenticated &&
              <Login

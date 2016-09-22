@@ -22,7 +22,8 @@ function receiveLogin(user) {
     type: LOGIN_SUCCESS,
     isFetching: false,
     isAuthenticated: true,
-    id_token: user.id_token
+    id_token: user.id_token,
+    all_fish: user.all_fish
   }
 }
 
@@ -85,8 +86,8 @@ export function loginUser(creds) {
         }
         else {
           // If login was successful, set the token in local storage
-          localStorage.setItem('id_token', user.id_token)
-          console.log("user token: ", user.auth_token)
+          localStorage.setItem('id_token', user.auth_token)
+          console.log("user token: ", user)
           
           // Dispatch the success action
           dispatch(receiveLogin(user))
@@ -112,19 +113,7 @@ export const QUOTE_FAILURE = 'QUOTE_FAILURE'
 export function fetchFish() {
   return {
     [CALL_API]: {
-      endpoint: 'random-quote',
-      types: [QUOTE_REQUEST, QUOTE_SUCCESS, QUOTE_FAILURE]
-    }
-  }
-}
-
-// Same API middlware is used to get a 
-// secret quote, but we set authenticated
-// to true so that the auth header is sent
-export function fetchSecretQuote() {
-  return {
-    [CALL_API]: {
-      endpoint: 'protected/random-quote',
+      endpoint: 'fish/1.json',
       authenticated: true,
       types: [QUOTE_REQUEST, QUOTE_SUCCESS, QUOTE_FAILURE]
     }

@@ -11,7 +11,7 @@ let createStoreWithMiddleware = applyMiddleware(thunkMiddleware, api)(createStor
 
 let store = createStoreWithMiddleware(quotesApp)
 
-let rootElement = document.getElementById('root')
+let rootElement = document.getElementById('app')
 
 render(
   <Provider store={store}>

@@ -3,41 +3,23 @@ import React, { Component, PropTypes } from 'react'
 export default class Quotes extends Component {
   
   render() {
-    const { onQuoteClick, onSecretQuoteClick, isAuthenticated, quote, isSecretQuote } = this.props
-    
+    const { onQuoteClick, onSecretQuoteClick, isAuthenticated, all_fish, quote } = this.props
+    console.log("all_fish", all_fish.fish)
     return (
-      <div>
-        <div className='col-sm-3'>
-          <button onClick={onQuoteClick} className="btn btn-primary">
-            Get Quotes
+      <div className='clearfix'>
+        <div className='col-sm-12'>
+          { quote &&
+            <div>
+              <h1 className="display-3">{quote.name}</h1>
+            </div>
+          }
+        </div>      
+        <div className='col-md-12 text-center'>
+          <button onClick={onQuoteClick} className="btn btn-primary btn-lg">
+            Get Fish
           </button>
         </div>
-        
-        { isAuthenticated &&
-          <div className='col-sm-3'>
-            <button onClick={onSecretQuoteClick} className="btn btn-warning">
-              Get Secret Quote
-            </button>
-          </div>
-        }
-        
-        <div className='col-sm-6'>
-          { quote && !isSecretQuote &&
-            <div>
-              <blockquote>{quote}</blockquote>
-            </div>
-          }
-          
-          { quote && isAuthenticated && isSecretQuote &&
-            <div>
-              <span className="label label-danger">Secret Quote</span>
-              <hr/>
-              <blockquote>
-                {quote}
-              </blockquote>
-            </div>
-          }
-        </div>
+
       </div>
     )
   }
@@ -45,8 +27,7 @@ export default class Quotes extends Component {
 
 Quotes.propTypes = {
   onQuoteClick: PropTypes.func.isRequired,
-  onSecretQuoteClick: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
-  quote: PropTypes.string,
+  quote: PropTypes.object,
   isSecretQuote: PropTypes.bool.isRequired
  }

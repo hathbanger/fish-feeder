@@ -4,6 +4,7 @@ function callApi(endpoint, authenticated) {
   
   let token = localStorage.getItem('id_token') || null
   let config = {}
+      console.log(token)
   
   if(authenticated) {
     if(token) {
@@ -17,7 +18,7 @@ function callApi(endpoint, authenticated) {
   
   return fetch(BASE_URL, config)
     .then(response =>
-      response.text()
+      response.json()
       .then(text => ({ text, response }))
     ).then(({ text, response }) => {
       if (!response.ok) {
