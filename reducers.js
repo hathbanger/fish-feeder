@@ -42,30 +42,30 @@ function auth(state = {
 }
 
 // The quotes reducer
-function quotes(state = {
-    isFetching: false,
-    quote: '',
-    authenticated: false
-  }, action) {
-  switch (action.type) {
-    case QUOTE_REQUEST:
-      return Object.assign({}, state, {
-        isFetching: true
-      })
-    case QUOTE_SUCCESS:
-      return Object.assign({}, state, {
-        isFetching: false,
-        quote: action.response,
-        authenticated: action.authenticated || false
-      })
-    case QUOTE_FAILURE:
-      return Object.assign({}, state, {
-        isFetching: false
-      })
-    default:
-      return state
-  }
-}
+// function quotes(state = {
+//     isFetching: false,
+//     quote: '',
+//     authenticated: false
+//   }, action) {
+//   switch (action.type) {
+//     case QUOTE_REQUEST:
+//       return Object.assign({}, state, {
+//         isFetching: true
+//       })
+//     case QUOTE_SUCCESS:
+//       return Object.assign({}, state, {
+//         isFetching: false,
+//         quote: action.response,
+//         authenticated: action.authenticated || false
+//       })
+//     case QUOTE_FAILURE:
+//       return Object.assign({}, state, {
+//         isFetching: false
+//       })
+//     default:
+//       return state
+//   }
+// }
 // The quotes reducer
 function all_fish(state = {
     isFetching: false,
@@ -86,10 +86,9 @@ function all_fish(state = {
 }
 // We combine the reducers here so that they
 // can be left split apart above
-const quotesApp = combineReducers({
+const fishFeederApp = combineReducers({
   auth,
-  quotes,
   all_fish
 })
 
-export default quotesApp
+export default fishFeederApp

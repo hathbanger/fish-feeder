@@ -3,12 +3,12 @@ import { connect } from 'react-redux'
 import { loginUser, fetchFish, fetchSecretQuote } from '../actions'
 import Login from '../components/Login'
 import Navbar from '../components/Navbar'
-import Quotes from '../components/Quotes'
+import AllTanks from '../components/AllTanks'
 
 class App extends Component {
   
   render() {
-    const { dispatch, quote, all_fish, isAuthenticated, errorMessage, isSecretQuote } = this.props
+    const { dispatch, all_fish, isAuthenticated, errorMessage } = this.props
     return (
       <div>
         <Navbar
@@ -18,13 +18,10 @@ class App extends Component {
         />
         <div className='container'>
         <div className='jumbotron'>
-          <Quotes
+          <AllTanks
             onQuoteClick={() => dispatch(fetchFish())}
-            onSecretQuoteClick={() => dispatch(fetchSecretQuote())}
             isAuthenticated={isAuthenticated}
-            quote={quote}
             all_fish={all_fish}
-            isSecretQuote={isSecretQuote}
           />
           
         </div>
@@ -36,23 +33,18 @@ class App extends Component {
 
 App.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  quote: PropTypes.object,
   all_fish: PropTypes.object,
   isAuthenticated: PropTypes.bool.isRequired,
-  errorMessage: PropTypes.string,
-  isSecretQuote: PropTypes.bool.isRequired
+  errorMessage: PropTypes.string
 }
 
 function mapStateToProps(state) {
   
-  const { quotes, auth, all_fish } = state
-  const { quote, authenticated } = quotes
+  const { auth, all_fish } = state
   const { isAuthenticated, errorMessage } = auth
   
   return {
-    quote,
     all_fish,
-    isSecretQuote: authenticated,
     isAuthenticated,
     errorMessage
   }
