@@ -4,7 +4,7 @@ function callApi(endpoint, authenticated) {
   
   let token = localStorage.getItem('id_token') || null
   let config = {}
-      console.log(token)
+      console.log("api!")
   
   if(authenticated) {
     if(token) {
