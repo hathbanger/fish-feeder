@@ -56,10 +56,11 @@ function quotes(state = {
         isFetching: true
       })
     case QUOTE_SUCCESS:
-      console.log('action: success:', action.response)
+      // var fish = {fish: action.response}
+      console.log('action: success - fish:', {"all_fish": {"fish": action.response}})
       return Object.assign({}, state, {
         isFetching: false,
-        all_fish: action.reponse,
+        all_fish: {"all_fish": {"fish": action.response}},
         authenticated: action.authenticated || false
       })
     case QUOTE_FAILURE:
