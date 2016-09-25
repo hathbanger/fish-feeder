@@ -16,16 +16,12 @@ class App extends Component {
           errorMessage={errorMessage}
           dispatch={dispatch}
         />
-        <div className='container'>
-          <div className='jumbotron'>
-            <AllTanks
-              onQuoteClick={() => dispatch(fetchTank())}
-              isAuthenticated={isAuthenticated}
-              all_fish={all_fish}
-              dispatch={dispatch}              
-            />
-          </div>
-        </div>
+        <AllTanks
+          fetchTankClick={fetchTank}
+          isAuthenticated={isAuthenticated}
+          all_fish={all_fish}
+          dispatch={dispatch}              
+        />
       </div>
     )
   }

@@ -1,18 +1,31 @@
 import React, { Component, PropTypes } from 'react'
-import { loginUser, fetchFish, fetchTank, fetchSecretQuote } from '../actions'
 import Tank from '../components/Tank'
 
 class TankContainer extends Component {
-  
+  constructor(props) {
+    super(props);
+  }
+
   componentDidMount() {
     console.log('TankContainer has mounted');
   }
 
+  log(payload){
+    console.log("fish",payload)
+  }
+
   render() {
-    const {  dispatch, fish, all_fish,  isAuthenticated, errorMessage } = this.props
+    const { dispatch, fish, fetchTankClick, onQuote, all_fish, fetchTank, isAuthenticated, errorMessage } = this.props
+    console.log('Cont Props: ', this.props)
+
+    console.log("all_fish",all_fish);
     return (
       <div>
-        <Tank onclick={() => dispatch(fetchTank())} fish={fish} />
+        <Tank 
+          fetchTankClick={() => dispatch(fetchTankClick(fish.id))} 
+          fish={fish}
+          all_fish={all_fish}
+          />
       </div>
     )
   }

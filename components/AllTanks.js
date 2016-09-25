@@ -4,29 +4,42 @@ import TankContainer from '../containers/TankContainer'
 export default class AllTanks extends Component {
   
   render() {
-    const { dispatch, onQuoteClick, isAuthenticated, all_fish, quote } = this.props
+    const { dispatch, fetchTankClick, isAuthenticated, all_fish, quote } = this.props
     let fishGroup = all_fish.all_fish.fish
+    console.log('all_fish', all_fish)
 
     return (
+        <div className='container'>
+          <div className='jumbotron'>
       <div className='clearfix'>
         <div className='col-sm-12'>
           { fishGroup &&
             <div>
               { (()=>fishGroup.map(function(fish) {
-                return <TankContainer onQuoteClick={onQuoteClick} key={fish.id} fish={fish} />
+                return  <TankContainer 
+                          dispatch={dispatch} 
+                          fetchTankClick={fetchTankClick} 
+                          key={fish.id} 
+                          fish={fish}
+                          all_fish={all_fish}
+                        />
               }))() }           
             </div>
 
           }        
         </div>
       </div> 
+        </div>
+      </div>
     )
   }
 }
 
 AllTanks.propTypes = {
   fish: PropTypes.object,
-  onQuoteClick: PropTypes.func.isRequired,
+  fetchTankClick: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   all_fish: PropTypes.object
  }
+
+ 
