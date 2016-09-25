@@ -36,7 +36,7 @@ App.propTypes = {
 
 function mapStateToProps(state) {
   
-  const { auth, all_fish } = state
+  const { auth, quotes, all_fish } = state
   const { isAuthenticated, errorMessage } = auth
   
   return {
