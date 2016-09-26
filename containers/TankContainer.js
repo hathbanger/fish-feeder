@@ -5,6 +5,9 @@ class TankContainer extends Component {
 
   componentDidMount() {
     // console.log('TankContainer has mounted');
+    //0.0.0.0:28080
+    var connection = new WebSocket('ws://localhost:28080');
+    console.log('websocket', connection)
   }
 
   render() {
