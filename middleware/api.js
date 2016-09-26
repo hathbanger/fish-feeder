@@ -1,10 +1,10 @@
-const BASE_URL = 'http://localhost:3030/fish/1.json'
+const BASE_URL = 'http://localhost:3030'
 
 function callApi(endpoint, authenticated) {
   
   let token = localStorage.getItem('id_token') || null
   let config = {}
-      console.log(token)
+      console.log("api!")
   
   if(authenticated) {
     if(token) {
@@ -16,11 +16,12 @@ function callApi(endpoint, authenticated) {
     }
   }
   
-  return fetch(BASE_URL, config)
+  return fetch(BASE_URL + endpoint, config)
     .then(response =>
       response.json()
       .then(text => ({ text, response }))
     ).then(({ text, response }) => {
+      console.log('api response', text)
       if (!response.ok) {
         return Promise.reject(text)
       }
