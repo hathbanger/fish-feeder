@@ -3,8 +3,7 @@ export default class Tank extends Component {
 
   render() {
     const { fish, all_fish, fetchTankClick, test, onQuote } = this.props
-    console.log('Tank Props: ', this.props)
-    console.log('all_fish Props: ', all_fish)
+    
     return (
         <div className="col-md-4">
           <div className="card">

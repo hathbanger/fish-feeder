@@ -21,7 +21,7 @@ function callApi(endpoint, authenticated) {
       response.json()
       .then(text => ({ text, response }))
     ).then(({ text, response }) => {
-      console.log('api response', text)
+      // console.log('api response', text)
       if (!response.ok) {
         return Promise.reject(text)
       }

@@ -87,7 +87,7 @@ export function loginUser(creds) {
         else {
           // If login was successful, set the token in local storage
           localStorage.setItem('id_token', user.auth_token)
-          console.log("user token: ", user)
+          // console.log("user token: ", user)
           
           // Dispatch the success action
           dispatch(receiveLogin(user))

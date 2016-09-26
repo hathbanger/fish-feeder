@@ -43,34 +43,32 @@ function auth(state = {
 }
 
 // The quotes reducer
-function quotes(state = {
-    isFetching: false,
-    authenticated: false,
-    all_fish: {}
-  }, action) {
-  switch (action.type) {
-    case QUOTE_REQUEST:
-      console.log('action: request:', action)
-      return Object.assign({}, state, {
-        isFetching: true
-      })
-    // case QUOTE_SUCCESS:
-    //   console.log("response fish", action.response)
-    //   return Object.assign({}, state, {
-    //     isFetching: false,
-    //     all_fish: {"all_fish": action.response},
-    //     authenticated: action.authenticated || false
-    //   })
-    case QUOTE_FAILURE:
-      console.log('action: failure:', action)
-      return Object.assign({}, state, {
-        isFetching: false,
-        errorMessage: 'failed! '
-      })
-    default:
-      return state
-  }
-}
+// function quotes(state = {
+//     isFetching: false,
+//     authenticated: false,
+//     all_fish: {}
+//   }, action) {
+//   switch (action.type) {
+//     case QUOTE_REQUEST:
+//       console.log('action: request:', action)
+//       return Object.assign({}, state, {
+//         isFetching: true
+//       })
+//     case QUOTE_SUCCESS:
+//       return Object.assign({}, state, {
+//         isFetching: false,
+//         authenticated: action.authenticated || false
+//       })
+//     case QUOTE_FAILURE:
+//       console.log('action: failure:', action)
+//       return Object.assign({}, state, {
+//         isFetching: false,
+//         errorMessage: 'failed! '
+//       })
+//     default:
+//       return state
+//   }
+// }
 // The quotes reducer
 function all_fish(state = {
     isFetching: false,
@@ -78,12 +76,10 @@ function all_fish(state = {
     authenticated: false
   }, action) {
   switch (action.type) {
-    case LOGIN_SUCCESS:
+    case QUOTE_REQUEST:
+      console.log('action: request:', action)
       return Object.assign({}, state, {
-        isFetching: false,
-        isAuthenticated: true,
-        all_fish: action.all_fish,
-        errorMessage: ''
+        isFetching: true
       })
     case QUOTE_SUCCESS:
       console.log("QUOTE_SUCCESS fish", action.response)
@@ -91,6 +87,19 @@ function all_fish(state = {
         isFetching: false,
         all_fish: action.response.all_fish,
         authenticated: action.authenticated || false
+      })
+    case QUOTE_FAILURE:
+      console.log('action: failure:', action)
+      return Object.assign({}, state, {
+        isFetching: false,
+        errorMessage: 'failed! '
+      })    
+    case LOGIN_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        isAuthenticated: true,
+        all_fish: action.all_fish,
+        errorMessage: ''
       })
     default:
       return state
@@ -100,7 +109,7 @@ function all_fish(state = {
 // can be left split apart above
 const fishFeederApp = combineReducers({
   auth,
-  quotes,
+  // quotes,
   all_fish
 })
 

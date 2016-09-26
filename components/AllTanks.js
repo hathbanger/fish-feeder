@@ -6,29 +6,28 @@ export default class AllTanks extends Component {
   render() {
     const { dispatch, fetchTankClick, isAuthenticated, all_fish, quote } = this.props
     let fishGroup = all_fish.all_fish.fish
-    console.log('all_fish', all_fish)
 
     return (
         <div className='container'>
           <div className='jumbotron'>
-      <div className='clearfix'>
-        <div className='col-sm-12'>
-          { fishGroup &&
-            <div>
-              { (()=>fishGroup.map(function(fish) {
-                return  <TankContainer 
-                          dispatch={dispatch} 
-                          fetchTankClick={fetchTankClick} 
-                          key={fish.id} 
-                          fish={fish}
-                          all_fish={all_fish}
-                        />
-              }))() }           
-            </div>
+            <div className='clearfix'>
+              <div className='col-sm-12'>
+                { fishGroup &&
+                  <div>
+                    { (()=>fishGroup.map(function(fish) {
+                      return  <TankContainer 
+                                dispatch={dispatch} 
+                                fetchTankClick={fetchTankClick} 
+                                key={fish.id} 
+                                fish={fish}
+                                all_fish={all_fish}
+                              />
+                    }))() }           
+                  </div>
 
-          }        
-        </div>
-      </div> 
+                }        
+              </div>
+            </div> 
         </div>
       </div>
     )
