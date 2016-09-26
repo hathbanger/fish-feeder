@@ -5,9 +5,13 @@ import { Provider } from 'react-redux'
 import App from './containers/App'
 import quotesApp from './reducers'
 import thunkMiddleware from 'redux-thunk'
+import createLogger from 'redux-logger'
 import api from './middleware/api'
 
-let createStoreWithMiddleware = applyMiddleware(thunkMiddleware, api)(createStore)
+
+const logger = createLogger()
+
+let createStoreWithMiddleware = applyMiddleware(thunkMiddleware, api, logger)(createStore)
 
 let store = createStoreWithMiddleware(quotesApp)
 

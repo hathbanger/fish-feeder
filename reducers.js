@@ -45,9 +45,8 @@ function auth(state = {
 // The quotes reducer
 function quotes(state = {
     isFetching: false,
-    all_fish: {},
-    quote: '',
-    authenticated: false
+    authenticated: false,
+    all_fish: {}
   }, action) {
   switch (action.type) {
     case QUOTE_REQUEST:
@@ -55,14 +54,13 @@ function quotes(state = {
       return Object.assign({}, state, {
         isFetching: true
       })
-    case QUOTE_SUCCESS:
-      var fish = {"fish": action.response}
-      console.log('action: success - fish:', fish)
-      return Object.assign({}, state, {
-        isFetching: false,
-        all_fish: fish,
-        authenticated: action.authenticated || false
-      })
+    // case QUOTE_SUCCESS:
+    //   console.log("response fish", action.response)
+    //   return Object.assign({}, state, {
+    //     isFetching: false,
+    //     all_fish: {"all_fish": action.response},
+    //     authenticated: action.authenticated || false
+    //   })
     case QUOTE_FAILURE:
       console.log('action: failure:', action)
       return Object.assign({}, state, {
@@ -86,6 +84,13 @@ function all_fish(state = {
         isAuthenticated: true,
         all_fish: action.all_fish,
         errorMessage: ''
+      })
+    case QUOTE_SUCCESS:
+      console.log("QUOTE_SUCCESS fish", action.response)
+      return Object.assign({}, state, {
+        isFetching: false,
+        all_fish: action.response.all_fish,
+        authenticated: action.authenticated || false
       })
     default:
       return state

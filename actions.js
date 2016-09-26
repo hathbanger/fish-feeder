@@ -120,10 +120,10 @@ export function fetchFish() {
   }
 }
 // Uses the API middlware to get a quote
-export function fetchTank(fishId) {
+export function fetchTank(fish) {
   return {
     [CALL_API]: {
-      endpoint: '/fish/' + fishId + '/feed',
+      endpoint: '/fish/' + fish.id + '/feed',
       authenticated: true,
       types: [QUOTE_REQUEST, QUOTE_SUCCESS, QUOTE_FAILURE]
     }
